@@ -23,6 +23,48 @@ bool isBadVertex(int vertex, int countVert) {
 	return false;
 }
 
+bool isNumber(int a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
+bool isNumber(char a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
+bool isNumber(char * a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
+bool isNumber(std::string a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
+bool isNumber(float a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
+bool isNumber(double a){
+	if(sizeof(a)!=sizeof(int)){
+		return false;
+	}
+	return true;
+}
+
 string search(int** mas, int countVert, int beginVert, int endVert, list <memory> & mem){
 	endVert--;
 	queue<int> Queue;

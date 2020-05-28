@@ -34,4 +34,10 @@ string search(int** mas, int countVert, int beginVert, int endVert, list <memory
 
 bool isBadVertex(int vertex, int countVert);
 
-list <memory> getList();
+bool isNumber(char);
+bool isNumber(double);
+bool isNumber(float);
+bool isNumber(char*);
+bool isNumber(std::string);
+bool isNumber(int);
+
