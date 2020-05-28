@@ -1,6 +1,42 @@
 #include "source.h"
 #include <gtest/gtest.h>
 
+class memoryExp{
+
+	private:
+
+	double * mas;
+
+	string path;
+
+	public:
+
+	void setMas(double * mas);
+
+	void setPath(string path);
+
+	double * getMas();
+
+	string getPath();
+
+};
+
+void memoryExp::setMas(double * mas){
+	this->mas=mas;
+}
+
+void memoryExp::setPath(string path){
+	this->path=path;
+}
+
+double* memoryExp::getMas(){
+	return this->mas;
+}
+
+string memoryExp::getPath(){
+	return this->path;
+}
+
 TEST(oldTests, normGraph3){
 	int** mas;
 		mas = new int*[3];
@@ -334,6 +370,17 @@ TEST(newTests, noEmptyList){
 			null=true;
 		}
 		ASSERT_EQ(false, null);
+}
+
+TEST(newTests, BadInput){
+	bool res = isNumber(5.5);
+	ASSERT_EQ(false, res);
+	res = isNumber('5');
+	ASSERT_EQ(false, res);
+	res = isNumber("five");
+	ASSERT_EQ(false, res);
+	res = isNumber(3);
+	ASSERT_EQ(true, res);
 }
 
 int main(int argc, char *argv[]){
