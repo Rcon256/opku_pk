@@ -1,42 +1,6 @@
 #include "source.h"
 #include <gtest/gtest.h>
 
-class memoryExp{
-
-	private:
-
-	double * mas;
-
-	string path;
-
-	public:
-
-	void setMas(double * mas);
-
-	void setPath(string path);
-
-	double * getMas();
-
-	string getPath();
-
-};
-
-void memoryExp::setMas(double * mas){
-	this->mas=mas;
-}
-
-void memoryExp::setPath(string path){
-	this->path=path;
-}
-
-double* memoryExp::getMas(){
-	return this->mas;
-}
-
-string memoryExp::getPath(){
-	return this->path;
-}
-
 TEST(oldTests, normGraph3){
 	int** mas;
 		mas = new int*[3];
@@ -301,6 +265,33 @@ TEST(oldTests, IncoherentGraph){
 		ASSERT_EQ(expect, search(mas, 5, 1, 5, mem));
 }
 
+TEST(newTests, noEmptyList){
+	int** mas;
+		mas = new int*[3];
+		for (int i = 0; i < 3; i++)
+			mas[i] = new int[3];
+		mas[0][0] = 0;
+		mas[0][1] = 1;
+		mas[0][2] = 0;
+
+		mas[1][0] = 1;
+		mas[1][1] = 0;
+		mas[1][2] = 1;
+
+		mas[2][0] = 0;
+		mas[2][1] = 1;
+		mas[2][2] = 0;
+
+		list <memory> mem;
+		search(mas, 3, 1, 3, mem);
+		search(mas, 3, 1, 2, mem);
+		bool null = false;
+		if(mem.size()==0){
+			null=true;
+		}
+		ASSERT_EQ(false, null);
+}
+
 TEST(newTests, equalLists){
 	int** mas;
 		mas = new int*[3];
@@ -343,33 +334,6 @@ TEST(newTests, equalLists){
 			}
 		}
 		ASSERT_EQ(true, eq);
-}
-
-TEST(newTests, noEmptyList){
-	int** mas;
-		mas = new int*[3];
-		for (int i = 0; i < 3; i++)
-			mas[i] = new int[3];
-		mas[0][0] = 0;
-		mas[0][1] = 1;
-		mas[0][2] = 0;
-
-		mas[1][0] = 1;
-		mas[1][1] = 0;
-		mas[1][2] = 1;
-
-		mas[2][0] = 0;
-		mas[2][1] = 1;
-		mas[2][2] = 0;
-
-		list <memory> mem;
-		search(mas, 3, 1, 3, mem);
-		search(mas, 3, 1, 2, mem);
-		bool null = false;
-		if(mem.size()==0){
-			null=true;
-		}
-		ASSERT_EQ(false, null);
 }
 
 TEST(newTests, BadInput){
